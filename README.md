@@ -57,3 +57,21 @@ var port = 8000;
 app.use('/api', morest(router, {controllers: [BearController]}));
 app.listen(port);
 ```
+
+### Defining a controller ###
+Morest comes with its own controllers that allow Morest to easily generate routes. 
+
+Before defining a controller, a Mongoose schema is required.
+
+The following options can be passed into the controller:
+
+`schema`: the name of the Mongoose schema
+
+`availableOperations`: array of operations that can be performed with this controller, e.g.: `GET_ALL`, `GET`, 
+`POST`, `UPDATE`, `DELETE`. By default, all operations are enabled.
+
+### Generating the routes ###
+First create an Express router by doing: `var router = express.Router()`.
+
+Then generate the routes by adding them to your app: `app.use('/api', morest(router, {controllers: 
+[ControllerObject1, ControllerObject2]}))`.
