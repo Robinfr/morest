@@ -54,7 +54,7 @@ app.use(bodyParser.json());
 
 var port = 8000;
 
-app.use('/api', mongoose, morest(router, {controllers: [BearController]}));
+app.use('/api', morest(router, mongoose, {controllers: [BearController]}));
 app.listen(port);
 ```
 
@@ -73,5 +73,5 @@ The following options can be passed into the controller:
 ### Generating the routes ###
 First create an Express router by doing: `var router = express.Router()`.
 
-Then generate the routes by adding them to your app: `app.use('/api', mongoose, morest(router, {controllers: 
+Then generate the routes by adding them to your app: `app.use('/api', morest(router, mongoose, {controllers: 
 [ControllerObject1, ControllerObject2]}))`.

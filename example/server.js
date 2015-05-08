@@ -14,5 +14,5 @@ app.use(bodyParser.json());
 
 var port = 8000;
 
-app.use('/api', mongoose, morest(router, {controllers: [BearController]}));
+app.use('/api', morest(router, mongoose, {controllers: [BearController]}));
 app.listen(port);
