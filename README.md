@@ -4,6 +4,8 @@ Allows developers to quickly create RESTful APIs using MongoDB and Express.
 
 ### Using Morest ###
 
+Install using npm: `npm install morest --save`
+
 The basic idea behind Morest is to write as little boilerplate code as possible. To get started all you have to do is
 define the MongoDB schema using Mongoose and add the routes to an Express Router.
  
