@@ -17,5 +17,12 @@
     "express"
   ],
   "author": "Robin Franken",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^4.0.2"
+  },
+  "devDependencies": {
+    "body-parser": "^1.12.3",
+    "express": "^4.12.3"
+  }
 }
