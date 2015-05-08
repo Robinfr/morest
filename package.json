@@ -1,0 +1,21 @@
+{
+  "name": "morest",
+  "version": "1.0.0",
+  "description": "Allows developers to quickly create RESTful APIs using MongoDB and Express.",
+  "main": "src/morest.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://Robinf@bitbucket.org/Robinf/morest.git"
+  },
+  "keywords": [
+    "rest",
+    "api",
+    "mongodb",
+    "express"
+  ],
+  "author": "Robin Franken",
+  "license": "ISC"
+}
