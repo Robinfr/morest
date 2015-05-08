@@ -1,29 +1,59 @@
-# README #
+# Morest #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Allows developers to quickly create RESTful APIs using MongoDB and Express.
 
-### What is this repository for? ###
+### Using Morest ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+The basic idea behind Morest is to write as little boilerplate code as possible. To get started all you have to do is
+define the MongoDB schema using Mongoose and add the routes to an Express Router.
+ 
+**app/controllers/bear.js:**
 
-### How do I get set up? ###
+```javascript
+var mongoose = require('mongoose'), 
+    Schema = mongoose.Schema,
+    morest = require('morest'),
+    Controller = morest.Controller;
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+var BearSchema = new Schema({
+    name: {type: String, required: true},
+    type: String
+});
 
-### Contribution guidelines ###
+mongoose.model('Bear', BearSchema);
 
-* Writing tests
-* Code review
-* Other guidelines
+var BearController = new Controller({
+    schema: 'Bear',
+    availableOperations: [
+        'GET_ALL',
+        'GET'
+    ]
+});
 
-### Who do I talk to? ###
+module.exports = BearController;
+```
 
-* Repo owner or admin
-* Other community or team contact
+Then set up a server to use the controller.
+
+**server.js:**
+
+```javascript
+var express = require('express'),
+    app = express(),
+    router = express.Router(),
+    mongoose = require('mongoose'),
+    bodyParser = require('body-parser'),
+    morest = require('morest').Morest;
+
+mongoose.connect('mongodb://127.0.0.1:27017/bears');
+
+var BearController = require('./app/controllers/bear');
+
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+
+var port = 8000;
+
+app.use('/api', morest(router, {controllers: [BearController]}));
+app.listen(port);
+```
