@@ -87,6 +87,8 @@ items based on the URL.
 
 For example, searching for just grizzly bears could be done by navigating to the endpoint `/bears/?type=grizzly bear`.
 
+You can also limit results by using `?limit=10` or skip results by using `?skip=10`.
+
 ### Customizing controllers ###
 The base controller has one function for each operation. In case more advanced features are required for a certain 
 controller they can easily be overwritten. 

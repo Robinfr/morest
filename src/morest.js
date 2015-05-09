@@ -12,21 +12,46 @@ Controller.prototype = {
     },
 
     GET_ALL: function (req, res) {
-        if(this._mongooseModel === null){
+        if (this._mongooseModel === null) {
             throw new Error('[Morest] Controller does not have access to a Mongoose instance');
         }
 
-        this._mongooseModel.find(req.query, function (err, results) {
+        var limit = 0,
+            skip = 0;
+
+        //Limit
+        if (req.query.hasOwnProperty('limit')) {
+            limit = req.query['limit'];
+            delete req.query['limit'];
+        }
+
+        //Skip
+        if (req.query.hasOwnProperty('skip')) {
+            skip = req.query['skip'];
+            delete req.query['skip'];
+        }
+
+        var query = this._mongooseModel.find(req.query);
+
+        if (limit > 0) {
+            query.limit(limit);
+        }
+
+        if (skip > 0) {
+            query.skip(skip);
+        }
+
+        query.exec(function (err, results) {
             if (err) {
                 res.send(err);
             } else {
-               res.send(results);
+                res.send(results);
             }
         });
     },
 
     GET: function (req, res) {
-        if(this._mongooseModel === null){
+        if (this._mongooseModel === null) {
             throw new Error('[Morest] Controller does not have access to a Mongoose instance');
         }
 
@@ -40,7 +65,7 @@ Controller.prototype = {
     },
 
     POST: function (req, res) {
-        if(this._mongooseModel === null){
+        if (this._mongooseModel === null) {
             throw new Error('[Morest] Controller does not have access to a Mongoose instance');
         }
 
@@ -60,7 +85,7 @@ Controller.prototype = {
     },
 
     PUT: function (req, res) {
-        if(this._mongooseModel === null){
+        if (this._mongooseModel === null) {
             throw new Error('[Morest] Controller does not have access to a Mongoose instance');
         }
 
@@ -84,7 +109,7 @@ Controller.prototype = {
     },
 
     DELETE: function (req, res) {
-        if(this._mongooseModel === null){
+        if (this._mongooseModel === null) {
             throw new Error('[Morest] Controller does not have access to a Mongoose instance');
         }
 
@@ -107,7 +132,7 @@ Controller.prototype = {
         return this._mongooseModel.collection.name.toLowerCase();
     },
 
-    setMongooseInstance: function(mongoose){
+    setMongooseInstance: function (mongoose) {
         this._mongooseModel = mongoose.model(this.model);
     }
 };
@@ -122,7 +147,7 @@ var Morest = function (router, mongoose, opts) {
         throw new Error('[Morest] Router not defined');
     }
 
-    if (mongoose === null || typeof mongoose === 'undefined'){
+    if (mongoose === null || typeof mongoose === 'undefined') {
         throw new Error('[Morest] Mongoose not defined');
     }
 
