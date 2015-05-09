@@ -1,6 +1,6 @@
 {
   "name": "morest",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Allows developers to quickly create RESTful APIs using MongoDB and Express.",
   "main": "src/morest.js",
   "scripts": {
