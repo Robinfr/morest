@@ -3,7 +3,7 @@ var Controller = function (opts) {
     this.availableOperations = opts.availableOperations || ['GET_ALL', 'GET', 'POST', 'PUT', 'DELETE'];
     this.model = opts.model || null;
 
-    //this._mongooseModel = mongoose.model(this.schema);
+    this._mongooseModel = null;
 };
 
 Controller.prototype = {
@@ -12,7 +12,10 @@ Controller.prototype = {
     },
 
     GET_ALL: function (req, res) {
-        //NOTE: This does not retrieve results of things with a default value, solution would be to save if a schema change has occurred
+        if(this._mongooseModel === null){
+            throw new Error('[Morest] Controller does not have access to a Mongoose instance');
+        }
+
         this._mongooseModel.find(req.query, function (err, results) {
             if (err) {
                 res.send(err);
@@ -23,6 +26,10 @@ Controller.prototype = {
     },
 
     GET: function (req, res) {
+        if(this._mongooseModel === null){
+            throw new Error('[Morest] Controller does not have access to a Mongoose instance');
+        }
+
         this._mongooseModel.findById(mongoose.Types.ObjectId(req.params.id), function (err, result) {
             if (err) {
                 res.send(err);
@@ -33,6 +40,10 @@ Controller.prototype = {
     },
 
     POST: function (req, res) {
+        if(this._mongooseModel === null){
+            throw new Error('[Morest] Controller does not have access to a Mongoose instance');
+        }
+
         var item = new this._mongooseModel();
 
         for (var key in req.body) {
@@ -49,6 +60,10 @@ Controller.prototype = {
     },
 
     PUT: function (req, res) {
+        if(this._mongooseModel === null){
+            throw new Error('[Morest] Controller does not have access to a Mongoose instance');
+        }
+
         this._mongooseModel.findById(mongoose.Types.ObjectId(req.params.id), function (err, result) {
             if (err) {
                 res.send(err);
@@ -69,6 +84,10 @@ Controller.prototype = {
     },
 
     DELETE: function (req, res) {
+        if(this._mongooseModel === null){
+            throw new Error('[Morest] Controller does not have access to a Mongoose instance');
+        }
+
         this._mongooseModel.findById(mongoose.Types.ObjectId(req.params.id), function (err, result) {
             if (err) {
                 res.send(err);
