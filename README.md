@@ -25,7 +25,7 @@ var BearSchema = new Schema({
 mongoose.model('Bear', BearSchema);
 
 var BearController = new Controller({
-    schema: 'Bear',
+    model: 'Bear',
     availableOperations: [
         'GET_ALL',
         'GET'
@@ -67,7 +67,7 @@ Before defining a controller, a Mongoose schema is required.
 
 The following options can be passed into the controller:
 
-`schema`: the name of the Mongoose schema
+`model`: the name of the Mongoose model
 
 `availableOperations`: array of operations that can be performed with this controller, e.g.: `GET_ALL`, `GET`, 
 `POST`, `UPDATE`, `DELETE`. By default, all operations are enabled.

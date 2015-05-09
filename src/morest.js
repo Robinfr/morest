@@ -1,7 +1,7 @@
 var Controller = function (opts) {
     //Parse all the options
     this.availableOperations = opts.availableOperations || ['GET_ALL', 'GET', 'POST', 'PUT', 'DELETE'];
-    this.schema = opts.schema || null;
+    this.model = opts.model || null;
 
     //this._mongooseModel = mongoose.model(this.schema);
 };
@@ -89,7 +89,7 @@ Controller.prototype = {
     },
 
     setMongooseInstance: function(mongoose){
-        this._mongooseModel = mongoose.model(this.schema);
+        this._mongooseModel = mongoose.model(this.model);
     }
 };
 
