@@ -77,3 +77,31 @@ First create an Express router by doing: `var router = express.Router()`.
 
 Then generate the routes by adding them to your app: `app.use('/api', morest(router, mongoose, {controllers: 
 [ControllerObject1, ControllerObject2]}))`.
+
+The routes are generated based on the Mongoose collection names, e.g. bear is turned into `/bears`, and cave is turned 
+into `/caves`.
+
+### Filtering routes ###
+There is a basic implementation of filtering available by default in each collection. This allows someone to filter 
+items based on the URL. 
+
+For example, searching for just grizzly bears could be done by navigating to the endpoint `/bears/?type=grizzly bear`.
+
+### Customizing controllers ###
+The base controller has one function for each operation. In case more advanced features are required for a certain 
+controller they can easily be overwritten. 
+
+For example:
+
+```
+var BearController = new Controller({
+    model: 'Bear'
+});
+
+BearController.GET = function(req, res){
+    res.send('We dont have any bears yet!');
+};
+```
+
+# Contribute #
+If you are willing to contribute, feel free to open an issue or create a pull request.
