@@ -1,6 +1,6 @@
 # Morest #
 
-Allows developers to quickly create RESTful APIs using MongoDB and Express.
+Allows developers to quickly create RESTful APIs using a mix of MongoDB, Express and NodeJS.
 
 ### Using Morest ###
 
@@ -73,6 +73,8 @@ The following options can be passed into the controller:
 `POST`, `UPDATE`, `DELETE`. By default, all operations are enabled.
 
 ### Generating the routes ###
+Generating CRUD routes is simple. 
+
 First create an Express router by doing: `var router = express.Router()`.
 
 Then generate the routes by adding them to your app: `app.use('/api', morest(router, mongoose, {controllers: 
