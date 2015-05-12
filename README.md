@@ -4,6 +4,12 @@ Allows developers to quickly create RESTful APIs using a mix of MongoDB, Express
 
 ### Using Morest ###
 
+#### Morest generator ####
+The quickest way to get started with Morest is by using the [Morest generator](https://github
+.com/Robinfr/generator-morest).
+
+#### Manually ####
+
 Install using npm: `npm install morest --save`
 
 The basic idea behind Morest is to write as little boilerplate code as possible. To get started all you have to do is
