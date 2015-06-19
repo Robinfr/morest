@@ -1,3 +1,5 @@
+var mongoose = require('mongoose');
+
 var Controller = function (opts) {
     //Parse all the options
     this.availableOperations = opts.availableOperations || ['GET_ALL', 'GET', 'POST', 'PUT', 'DELETE'];
