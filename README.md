@@ -42,7 +42,7 @@ module.exports = BearController;
 
 Then set up a server to use the controller.
 
-**server.js:**
+G**server.js:**
 
 ```javascript
 var express = require('express'),
@@ -117,3 +117,7 @@ BearController.GET = function(req, res){
 
 # Contribute #
 If you are willing to contribute, feel free to open an issue or create a pull request.
+
+
+## Running tests ##
+The tests can be run with ``npm test``. This will start the mocha tests.
