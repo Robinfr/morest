@@ -18,10 +18,11 @@
   ],
   "author": "Robin Franken",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "mongoose": "^4.0.2"
+  },
   "devDependencies": {
     "body-parser": "^1.12.3",
-    "express": "^4.12.3",
-    "mongoose": "^4.0.2"
+    "express": "^4.12.3"
   }
 }
