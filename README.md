@@ -42,7 +42,7 @@ module.exports = BearController;
 
 Then set up a server to use the controller.
 
-G**server.js:**
+**server.js:**
 
 ```javascript
 var express = require('express'),
