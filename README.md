@@ -96,7 +96,7 @@ For example, searching for just grizzly bears could be done by navigating to the
 
 You can also limit results by using `?limit=10` or skip results by using `?skip=10`.
 
-If you want to perform more advanced filtering you can also use Javascript filtering by use `$where` in the URL, 
+If you want to perform more advanced filtering you can also use Javascript filtering by using `$where` in the URL, 
 e.g.: `/bears/?$where=this.type.indexOf("Grizzly")>-1`.
 
 ### Customizing controllers ###
