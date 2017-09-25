@@ -105,7 +105,7 @@ controller they can easily be overwritten.
 
 For example:
 
-```
+```javascript
 var BearController = new Controller({
     model: 'Bear'
 });
